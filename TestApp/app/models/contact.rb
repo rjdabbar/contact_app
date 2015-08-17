@@ -12,4 +12,10 @@ class Contact < ActiveRecord::Base
   has_many :shared_users,
     through: :contact_shares,
     source: :user
+
+  has_many :group_contacts
+
+  has_many :groups,
+    through: :group_contacts,
+    source: :group
 end

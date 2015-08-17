@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
 
   has_many :comments, as: :commentable
 
+  has_many :groups
+
   has_many :shared_contacts,
     through: :contact_shares,
     source: :contact
