@@ -2,12 +2,9 @@ require 'byebug'
 class ContactsController < ApplicationController
 
   def index
-    @user = User.find(params[:user_id])
+    @user = User.includes(:contacts, :shared_contacts).find(params[:user_id])
     if @user
-       User.where(id: @user.id).includes(:contacts, :shared_contacts).each do |user|
-        @contacts = user.contacts + user.shared_contacts
-      end
-
+        @contacts = @user.contacts + @user.shared_contacts
     else
         @contacts = Contact.all
     end

@@ -5,8 +5,9 @@ class User < ActiveRecord::Base
 
   has_many :contact_shares, dependent: :destroy
 
+  has_many :comments, as: :commentable
+
   has_many :shared_contacts,
-    # -> { includes :contacts },
     through: :contact_shares,
     source: :contact
 end
