@@ -2,7 +2,7 @@ require 'byebug'
 class UsersController < ApplicationController
 
   def index
-    render text: "I'm in the index action!"
+    render json: User.all
   end
 
   def update
@@ -10,6 +10,8 @@ class UsersController < ApplicationController
   end
 
   def create
-    render json: params
+    user = User.new(params[:user].permit(:name, :email))
+    user.save!
+    render json: user
   end
 end
