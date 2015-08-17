@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   resources :users do
     resources :contacts, only: [:index]
     resources :comments, only: [:index]
+    resources :groups, only: [:show, :index]
   end
 
   resources :contacts do
