@@ -1,11 +1,11 @@
 class ContactsController < ApplicationController
 
   def index
-    render json: User.all
+    render json: Contact.all
   end
 
   def show
-    render json: User.find(params[:id])
+    render json: Contact.find(params[:id])
   end
 
   def update
